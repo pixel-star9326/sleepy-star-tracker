@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleepy Star Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        
+        .moon {
+            width: 100px;
+            height: 100px;
+            background: #f4f4f4;
+            border-radius: 50%;
+            margin: 20px auto;
+            box-shadow: 0 0 30px rgba(244, 244, 244, 0.6);
+            position: relative;
+        }
+        
+        .moon::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            width: 15px;
+            height: 15px;
+            background: #ddd;
+            border-radius: 50%;
+        }
+        
+        .moon::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            background: #ddd;
+            border-radius: 50%;
+        }
+        
+        .tracker-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .sleep-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #64b5f6;
+        }
+        
+        .coming-soon {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <h1>🌙 Sleepy Star Tracker</h1>
+        <div class="moon"></div>
+        
+        <div class="tracker-info">
+            <h2>Track Your Sleep Under the Stars</h2>
+            <p>Monitor your sleep patterns, dream cycles, and wake up refreshed with our celestial sleep tracking companion.</p>
+        </div>
+        
+        <div class="sleep-stats">
+            <div class="stat-card">
+                <div class="stat-number">8.2h</div>
+                <div>Average Sleep</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">92%</div>
+                <div>Sleep Quality</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div>Dream Cycles</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7:30</div>
+                <div>Optimal Bedtime</div>
+            </div>
+        </div>
+        
+        <div class="coming-soon">
+            ✨ Coming Soon ✨
+        </div>
+        
+        <p>Sweet dreams are made of data 📊</p>
+    </div>
+    
+    <script>
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 100;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        createStars();
+    </script>
+</body>
+</html>
